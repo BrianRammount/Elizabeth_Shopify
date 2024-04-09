@@ -1,18 +1,33 @@
 {
   "sections": {
     "template": {
-        "type": "template-article",
-        "blocks": {
-        "title": {
-            "type": "article_title"
-            }
+      "type": "template-article",
+      "blocks": {
+        "article_published_date_C9D9J7": {
+          "type": "article_published_date",
+          "settings": {
+          }
         },
-        "block_order": ["title"],
-
-        "settings": {
-            "enable_author": true,
-            "enable_published_date": true
+        "title": {
+          "type": "article_title",
+          "settings": {
+          }
+        },
+        "article_author_cGXJQE": {
+          "type": "article_author",
+          "settings": {
+          }
         }
+      },
+      "block_order": [
+        "article_published_date_C9D9J7",
+        "title",
+        "article_author_cGXJQE"
+      ],
+      "settings": {
+        "enable_author": true,
+        "enable_published_date": true
+      }
     }
   },
   "order": [
