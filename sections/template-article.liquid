@@ -59,6 +59,11 @@
     {% endfor %}
   </article>
 
+  {% if blog.comment_enabled? %}
+    hello comment world
+  {% else %}
+    no comment
+  {% endif %}
 
   {% schema %}
     {
