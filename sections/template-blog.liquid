@@ -8,7 +8,7 @@
       <div>this is image {{ article.image }}</div>
       <div>
         {% if article.image %}
-          <img src="{{ artcile.image  }}" alt="{{article.image.alt}}">
+          <img src="{{ artcile.image |  img_url: 'medium' }}" alt="{{article.image.alt}}">
         {% else %}
           {{ 'image' | placeholder_svg_tag: 'w-20' }}
         {% endif %}
