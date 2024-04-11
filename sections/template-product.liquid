@@ -1,9 +1,14 @@
+{% comment %} CDN for Swiper coursel {% endcomment %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 {% comment %} Container {% endcomment %}
 <div class="max-w-6xl mx-auto my-8">
   {% comment %} Grid container {% endcomment %}
   <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
     {% comment %} Product Images {% endcomment %}
     <div class="product--medias">
+      {% comment %} Renders on medium screen {% endcomment %}
       <div class="hidden md:block">
         {% comment %} Loops through media for product {% endcomment %}
         {% for media in product.media %}
