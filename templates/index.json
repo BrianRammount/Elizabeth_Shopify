@@ -11,6 +11,7 @@
     "contact_form_FhzNwn": {
       "type": "contact-form",
       "settings": {
+        "title": "Contact Us"
       }
     }
   },
