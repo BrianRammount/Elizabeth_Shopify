@@ -3,7 +3,7 @@
   {% comment %} Form {% endcomment %}
   {% form 'contact' %}
     {% comment %} Error messages {% endcomment %}
-    {% if form.error %}
+    {% if form.errors %}
       <div class="border p-5">
         <div class="flex flex-row items-center w-full my-3">
           <div class="text-red-500">
@@ -49,7 +49,9 @@
             class="border py-3 px-4 mb-3 text-gray-700 w-full"
             type="email"
             name="contact[email]"
-            id="contact_email"></div>
+            id="contact_email"
+            placeholder="Email here"
+            required></div>
       </div>
       {% comment %} Message box and Submit container {% endcomment %}
       <div class="flex px-1 mb-3">
