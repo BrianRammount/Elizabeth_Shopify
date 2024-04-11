@@ -18,9 +18,46 @@
           </div>
         {% endfor %}
       </div>
+
+      {% comment %} Renders in medium screen {% endcomment %}
+      <div class="md:hidden">
+        {% comment %} Coursel wrapper {% endcomment %}
+        <div class="swiper h-94">
+          <div class="swiper-wrapper">
+            {% for media in product.media %}
+              <div class="swiper-slider">
+                <div class="h-80 overflow-hidden p-2">
+                  {% render 'product-media'
+                    , media: media %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% comment %} pagination {% endcomment %}
+        <div class="swiper-pagination"></div>
+        {% comment %} Previous Buttons {% endcomment %}
+        <div class="swiper-button-prev"></div>
+        {% comment %} Next Button {% endcomment %}
+        <div class="swiper-button-next"></div>
+      </div>
     </div>
     {% comment %} Product description {% endcomment %}
     <div class="product--information"></div>
 
   </div>
 </div>
+
+{% comment %} Initial swiper JS {% endcomment %}
+<script>
+    const swiper = new Swiper('.swiper', {
+        direction: 'horizontal',
+        pagination: {
+            el: '.swiper-pagination'
+        },
+        navigation: {
+            prevEl: 'swiper-button-prev',
+            nextEl: 'swiper-button-next'
+        }
+    })
+</script>
