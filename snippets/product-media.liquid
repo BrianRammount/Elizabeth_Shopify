@@ -1,1 +1,18 @@
-hello world
+{% case media.media_type %}
+  {% comment %} When media is image {% endcomment %}
+  {% when 'image' %}
+    <img
+      src="{{ media |  img_url: 'large' }}"
+      alt="{{ media.preview_image.alt }}"
+      class="w-full h-full object-cover">
+    {% comment %} When media is video {% endcomment %}
+    {% when 'external_video' %}
+      {{ media | external_video_tag: class: 'w-full h-80 object-cover' }}
+
+    {% comment %} When media video {% endcomment %}
+    {% when 'video' %}
+      {{ media | video_tag: controls: true, class: 'w-full h-full object-cover' }}
+      {% else %}
+
+
+  {% endcase %}
