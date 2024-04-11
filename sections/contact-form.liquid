@@ -1,5 +1,10 @@
 {% comment %} COntainer for contact form {% endcomment %}
 <div class="flex flex-col items-center my-8">
+  {% comment %} Title for contact box {% endcomment %}
+  {% if section.settings.title != blank} %}
+    <h1 class="text-3xl font-medium my-8 md:my-16">{{ section.settings.title }}</h1>
+  {% endif %}
+
   {% comment %} Form {% endcomment %}
   {% form 'contact' %}
     {% comment %} Error messages {% endcomment %}
@@ -84,6 +89,13 @@
 {% schema %}
   {
     "name": "Contact Form",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "title"
+      }
+    ],
     "presets": [
       {
         "name": "Contact Form"
