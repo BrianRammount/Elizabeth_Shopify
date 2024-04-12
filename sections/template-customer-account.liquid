@@ -5,7 +5,7 @@
   <!-- Order history -->
   <div class="block md:flex gap-4">
     {% assign number_of_orders = customer.orders | size %}
-    {% if number_of_orders > 0 %}
+      {% if number_of_orders > 0 %}
       <div class="w-full my-6 md:my-12">
         <h2 class="text-xl font-bold text-gray-700">Order History</h2>
         <!-- Rendering of Order History -->
@@ -13,11 +13,20 @@
           {% paginate customer.orders by 10 %}
             {% for order in customer.orders %}
               <div class="relative">
-                {{ order.name }}
+                <div class="w-full min-80 bg-gray-200 rounded-md overflow-hidden lg:h-80">
+                  {% if order.line_items.first.image %}
+                    <img src="{{ order.line_items.first.image |img_url: 'medium' }}" alt="{{ order.line_items.first.image.alt  }}">
+                  {% endif %}
+                </div>
               </div>
             {% endfor %}
           {% endpaginate %}
         </div>
+      </div>
+    <!-- IF no orders render the below -->
+    {% else %}
+      <div class="w-full h-80 flex items-center justify-center">
+        <h2 class="text-base md:text-2xl font-medium">Your current dont have any orders</h2>
       </div>
     {% endif %}
   </div>

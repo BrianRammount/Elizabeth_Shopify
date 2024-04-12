@@ -1107,6 +1107,11 @@ video {
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
 }
 
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1617,6 +1622,11 @@ video {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1626,6 +1636,10 @@ video {
 
   .lg\:ml-0 {
     margin-left: 0px;
+  }
+
+  .lg\:h-80 {
+    height: 20rem;
   }
 
   .lg\:max-w-7xl {
