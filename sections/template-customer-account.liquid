@@ -9,8 +9,9 @@
       <div class="w-full my-6 md:my-12">
         <h2 class="text-xl font-bold text-gray-700">Order History</h2>
         <!-- Rendering of Order History -->
-        <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {% paginate customer.orders by 1 %}
+        {% paginate customer.orders by 1 %}
+          <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+
             {% for order in customer.orders %}
               <div class="relative">
                 <!-- Image container -->
@@ -43,13 +44,14 @@
                 </div>
               </div>
             {% endfor %}
-            <!-- Render Pagination -->
-            <div class="max-w-6xl mx-auto">
-              {% render 'pagination'
-                , pagination: paginate %}
-            </div>
-          {% endpaginate %}
-        </div>
+
+          </div>
+          <!-- Render Pagination -->
+          <div class="max-w-6xl mx-auto">
+            {% render 'pagination'
+              , pagination: paginate %}
+          </div>
+        {% endpaginate %}
       </div>
     <!-- IF no orders render the below -->
     {% else %}
