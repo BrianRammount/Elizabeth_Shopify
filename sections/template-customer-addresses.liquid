@@ -213,7 +213,8 @@
         select.addEventListener('change', function(e){
           console.log("Say Hello")
           var provinces = this.options[this.selectedIndex].dataset.provinces;
-          var arrayOfProvince = JSON.parse(provinces);
+          console.log(provinces);
+  
         })
       })
     }
