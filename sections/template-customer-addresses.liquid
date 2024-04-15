@@ -15,6 +15,7 @@
       <!-- Form for adding customer address -->
       {% form 'customer_address'
         , customer.new_address %}
+        <!-- First name input -->
         <div class="mb-4">
           <label for="address_fname_{{ form.id }}" class="uppercase text-gray-700 text-sm font-medium mb-2">First name</label>
           <input
@@ -23,6 +24,76 @@
             name="address[first_name]"
             id="address_fname_{{ form.id }}"
             value="{{ form.first_name }}">
+        </div>
+        <!-- Last name input -->
+        <div class="mb-4">
+          <label for="address_lname_{{ form.id }}" class="uppercase text-gray-700 text-sm font-medium mb-2">Last name</label>
+          <input
+            type="text"
+            class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+            name="address[last_name]"
+            id="address_fname_{{ form.id }}"
+            value="{{ form.last_name }}">
+        </div>
+        <!-- First name input -->
+        <div class="mb-4">
+          <label for="address_fname_{{ form.id }}" class="uppercase text-gray-700 text-sm font-medium mb-2">First name</label>
+          <input
+            type="text"
+            class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+            name="address[first_name]"
+            id="address_fname_{{ form.id }}"
+            value="{{ form.first_name }}">
+        </div>
+        <!-- Company input -->
+        <div class="mb-4">
+          <label for="address_company_{{ form.id }}" class="uppercase text-gray-700 text-sm font-medium mb-2">Company</label>
+          <input
+            type="text"
+            class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+            name="address[company]"
+            id="address_company_{{ form.id }}"
+            value="{{ form.company }}">
+        </div>
+        <!-- Address input -->
+        <div class="mb-4">
+          <label for="address_address1_{{ form.id }}" class="uppercase text-gray-700 text-sm font-medium mb-2">Address 1</label>
+          <input
+            type="text"
+            class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+            name="address[address1]"
+            id="address_address1_{{ form.id }}"
+            value="{{ form.address1 }}">
+        </div>
+        <!-- Address2 input -->
+        <div class="mb-4">
+          <label for="address_address2_{{ form.id }}" class="uppercase text-gray-700 text-sm font-medium mb-2">Address 2</label>
+          <input
+            type="text"
+            class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+            name="address[address2]"
+            id="address_address2_{{ form.id }}"
+            value="{{ form.address2 }}">
+        </div>
+        <!-- City input -->
+        <div class="mb-4">
+          <label for="address_city_{{ form.id }}" class="uppercase text-gray-700 text-sm font-medium mb-2">City</label>
+          <input
+            type="text"
+            class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+            name="address[city]"
+            id="address_city_{{ form.id }}"
+            value="{{ form.city }}">
+        </div>
+        <!-- Country input -->
+        <div class="mb-4">
+          <label for="address_country_{{ form.id }}" class="uppercase text-gray-700 text-sm font-medium mb-2">Country</label>
+          <select
+            type="text"
+            class="w-full text-gray-700 border px-4 py-3 focus:outline-none"
+            name="address[country]"
+            id="address_country_{{ form.id }}"
+            value="{{ form.country }}">{{ account_country_option_tags }}</select>
         </div>
       {% endform %}
     </div>
