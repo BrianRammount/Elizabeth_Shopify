@@ -205,26 +205,16 @@
     }
   
     customerAddressesSelector(){
-      const addressesSelector = document.querySelectorAll("select[data-country-selector]")
+      const addressesSelector = document.querySelectorAll("select[data-country-selector]");
       if(addressesSelector.length < 1) return;
-      
-    
-      
-      addressesSelector.forEach(select => {  
+  
+      addressesSelector.forEach(select=>{
         select.addEventListener('change', function(e){
-          console.log("Say Hello")
-          var provinces = this.options[this.selectedIndex].dataset.provinces;
-          //Console to check province works
-          console.log(provinces);
-          var arrayOfProvince = JSON.parse(provinces);
-  
-          var provinceSelector = document.querySelector(`#address_province_${this.dataset.id}`)
-  
-          console.log(provinceSelector);
-  
-        })
-      })
+          console.log("Event change");
+        });
+      });
     }
+    
   }
   const customerAddress = new CustomerAddress();
 </script>
