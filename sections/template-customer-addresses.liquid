@@ -219,6 +219,21 @@
   
           var provinceSelector = document.querySelector(`#address_province_${this.dataset.id}`);
           console.log(provinceSelector);
+  
+          if(provinceSelector.length < 1){
+            provinceSelector.setAttribute('disabled', 'disabled');
+          }else {
+            provinceSelector.removeAttribute('disabled');
+          }
+  
+          provinceSelector.innerHTML = '';
+          var options = '';
+          for (let index = 0; index < arrayOfProvince.length; index++) {
+            options = `<option value="${arrayOfProvince[index][0]}"${arrayOfProvince[index][0]}</option>`;
+            
+          }
+  
+          provinceSelector.innerHTML += options
         });
       });
     }
