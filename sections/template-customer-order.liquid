@@ -94,7 +94,19 @@
       <h1 class="font-medium mg-4">Billing Address</h1>
       {{ order.billing_address | format_address }}
     </div>
-    <div></div>
+    <div>
+      <h1 class="font-medium mb-4">Payment Information</h1>
+      {% for transaction in order.transactions %}
+        <div class="mb-4">
+          {% assign credit_card_company = transaction.payment_details %}
+          {% assign credit_card_last_four_digits = transaction.payment_details.credit_card_number %}
+          {% if credit_card_company %}
+            <p>{{ credit_card_company }}</p>
+            <p>{{ credit_card_alst_four_digit }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
     <div></div>
   </div>
 </div>
