@@ -73,7 +73,13 @@
             <p class="mb-2">We have fulfilled {{ line_item.successfully_fulfilled_quantity }} items of your recent order.</p>
             <p class="mb-2">Tracking company: {{ line_item.fulfillment.tracking_company }}</p>
             <p class="mb-2">Tracking Number: {{ line_item.fulfillment.tracking_number }}</p>
-            <a href="{{ line_item.fulfillment.tracking_url }}" class="flex w-max text-sm text-white font-medium bg-gray-700 hover:bg-gray-900 px-4 py-1 rounded">Track Order</a>
+            <a
+              target="_blank"
+              href="{{ line_item.fulfillment.tracking_url }}"
+              class="flex w-max text-sm text-white font-medium bg-gray-700 hover:bg-gray-900 px-4 py-1 rounded">
+              Track Order
+              <span class="ml-1">{% render 'icon-link' %}</span>
+            </a>
           {% else %}
             <p class="text-gray-500">This item is not yet fulfilled</p>
           {% endif %}
@@ -83,5 +89,12 @@
     {% endfor %}
   </div>
 
-
+  <div class="w-full grid grid-cols-1 md:grip-cols-2 lg:grid-cols-3 gap-4 lg:gap-12 border border-gray-200 rounded-sm p-4 md:p-12 my-6 bg-gray-50">
+    <div>
+      <h1 class="font-medium mg-4">Billing Address</h1>
+      {{ order.billing_address | format_address }}
+    </div>
+    <div></div>
+    <div></div>
+  </div>
 </div>
