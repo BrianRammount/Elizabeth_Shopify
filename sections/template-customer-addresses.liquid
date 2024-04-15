@@ -209,7 +209,8 @@
   
       addressesSelector.forEach(select => {
         select.addEventListener('change', function(e){
-          console.log("something selected");
+          var provinces = this.options[this.selectedIndex].dataset.provinces
+          console.log(provinces)
         })
       })
     }
