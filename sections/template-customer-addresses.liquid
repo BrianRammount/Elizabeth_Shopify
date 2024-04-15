@@ -206,10 +206,15 @@
     customerAddressesSelector(){
       const addressesSelector = document.querySelectorAll("select[data-country-selector]")
       if(addressesSelector.length < 1) return;
-      // Consoles the Country 
-      console.log("this is the address selector " + addressesSelector[0][0]);
-  
-  
+      
+    
+      
+      addressesSelector.forEach(select => {  
+        select.addEventListener('change', function(e){
+          console.log("Say Hello")
+          var provinces = this.options[this.selectedIndex].dataset.provinces;
+          var arrayOfProvince = JSON.parse(provinces);
+      })
     }
   }
   const customerAddress = new CustomerAddress();
