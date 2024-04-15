@@ -220,7 +220,7 @@
           var provinceSelector = document.querySelector(`#address_province_${this.dataset.id}`);
           console.log(provinceSelector);
   
-          if(provinceSelector.length < 1){
+          if(arrayOfProvince.length < 1){
             provinceSelector.setAttribute('disabled', 'disabled');
           }else {
             provinceSelector.removeAttribute('disabled');
