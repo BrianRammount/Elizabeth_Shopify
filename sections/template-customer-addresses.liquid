@@ -209,32 +209,7 @@
       // Consoles the Country 
       console.log("this is the address selector " + addressesSelector);
   
-      // addressesSelector.forEach(select => {
-      //   select.addEventListener('change', function(e){
-      //     var provinces = this.options[this.selectedIndex].dataset.provinces;
-      //     var arrayOfProvince = JSON.parse(provinces);
   
-      //     console.log(this.dataset.id);
-          
-      //     var provinceSelector = document.querySelector(`#address_province_${this.dataset.id}`);
-  
-      //     console.log("this is the province selector in customer addresses " + provinceSelector );
-          
-          // if(arrayOfProvince.length < 1){
-          //   provinceSelector.setAttribute('disabled', 'disabled');
-          // }else{
-          //   provinceSelector.removeAttribute('disabled');
-          // }
-  
-          // provinceSelector.innerHTML = '';
-          // var options = '';
-          // for(var i = 0; i< arrayOfProvince.length; i++){
-          //   options += `<option value="${arrayOfProvince[i][0]}">${arrayOfProvince[i][0]}</option>` ;
-  
-          // }
-          // provinceSelector.innerHTML = options;
-      //   })
-      // })
     }
   }
   const customerAddress = new CustomerAddress();
