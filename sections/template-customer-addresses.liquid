@@ -179,7 +179,7 @@
         }
   
         provinceSelector.innerHTML = '';
-        for( var index =0; index < arrayOfProvince.length; index++){
+        for( var index = 0; index < arrayOfProvince.length; index++){
           if(arrayOfProvince[index][0] === provinceSelector.getAttribute('value')){
             options += `<option value="${arrayOfProvince[i][0]}" selected>${arrayOfProvince[index][0]}</option>`;
           }else{
@@ -187,6 +187,7 @@
           }
         }
         provinceSelector.innerHTML = options;
+        console.log("this is the province selector results "+ provinceSelector);
       })
     }
   
