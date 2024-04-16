@@ -5,30 +5,28 @@
     assign main_menu_linklist = section.settings.menu.links
   endif
 %}
-<!-- Nav Container -->
+
 <div
   class="relative bg-white"
   x-data="{ mobileMenuOpen: false, searchBarOpen: false }"
   x-cloak>
-  <!-- Inner container -->
   <div class="mx-auto px-4 sm:px-6">
-    <!-- Flex Container -->
-    <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+    <div class="flex justify-center items-center py-6 md:justify-start md:space-x-10">
       <!-- STORE NAME / STORE LOGO -->
       <div class="flex justify-start lg:flex-1 truncate">
         <h1 class="text-xl font-bold truncate">{{ shop.name }}</h1>
       </div>
+
       <div class="-mr-2 -my-2 ml-3 md:hidden">
         <button
           x-on:click="mobileMenuOpen = true"
           type="button"
           class="bg-white p-2 inline-flex items-center justify-center focus:outline-none">
-          {% render 'icon-hamburger' %}
+          {% render 'icon-menu' %}
         </button>
       </div>
       <!-- NAVIGATION MENU -->
       <nav class="hidden md:flex space-x-10">
-
 
         {% for link in main_menu_linklist %}
           {% if link.links != blank %}
@@ -72,33 +70,36 @@
           {% endif %}
         {% endfor %}
       </nav>
-      <!-- Cart Button / Account links if ENABLED -->
+      <!-- CART BUTTON / ACCOUNT LINKS IF ENABLED -->
       <div class="hidden md:flex items-center justify-end md:flex-1 space-x-5">
         <button
           x-on:click="searchBarOpen = true"
           type="button"
-          class="
-            whitespace-nowrap
-            text-base
-            text-gray-500
-            hover:text-gray-900">
+          class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
           {% render 'icon-search' %}
         </button>
         <a href="{{ routes.cart_url }}" class="whitespace-nowrap text-base text-gray-500 hover:text-gray-900">
           {% render 'icon-shopping-bag' %}
         </a>
-        {% if shop.customer_accounts_enabled %}
-          <a href="{{ routes.account_login_url }}" class="text-base text-gray-500 hover:text-gray-900">Login</a>
-          <a href="{{ routes.account_register_url }}" class="text-base text-gray-500 hover:text-gray-900">Register</a>
-        {% endif %}
 
+        {% if shop.customer_accounts_enabled %}
+          {% if customer %}
+            <a href="{{ routes.account_url }}" class="text-base text-gray-500 hover:text-gray-900">account</a>
+            {{ 'Log out' | customer_logout_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
+          {% else %}
+            {{ 'Log in ' | customer_login_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
+            {{ 'Register' | customer_register_link | replace: '<a', '<a class="text-base text-gray-500 hover:text-gray-900"' }}
+          {% endif %}
+        {% endif %}
       </div>
+
       <!-- MOBILE MENU CONTAINER -->
       <div x-show="mobileMenuOpen" class="absolute z-10 top-0 inset-x-0 p-2 transform origin-top-left md:hidden">
         <div class="shadow-lg rounded-lg ring-1 ring-black ring-opacity-5 bg-white w-full">
           <div class="p-5 divide-y-2 divide-gray-50">
 
             <!-- MOBILE MENU HEADER TITLE PLUS CLOSE BUTTON -->
+
             <div class="flex items-center justify-between pb-3">
               <div>
                 <h1 class="text-lg text-gray-500">{{ section.settings.mobile_menu_title }}</h1>
@@ -116,56 +117,50 @@
             <!-- NAVIGATION LINKS FOR MOBILE MENU -->
             <div class="pt-3">
               <nav class="grid gap-y-7">
+
                 {% for link in main_menu_linklist %}
-                  {% assign link_handle = link.handle | replace: '-', '_' %}
                   {% if link.links != blank %}
-                    <div x-data="{ {{ link_handle }}: false}" class="relative">
+                    {% assign mobile_link_handle = link.handle | replace: '-', '_' %}
+                    <div class="relative" x-data="{ {{ mobile_link_handle }}: false }">
                       <button
-                        x-on:click="{{ link_handle }} = ! {{ link_handle }}"
+                        x-on:click="{{ mobile_link_handle }} = ! {{ mobile_link_handle }}"
                         type="button"
                         class="text-base text-gray-500 hover:text-gray-900 flex items-center justify-between w-full">
                         <div>{{ link.title }}</div>
                         {% render 'icon-dropdown' %}
                       </button>
-                      <div x-show="{{ link_handle }}" class="grid gap-y-7 py-3">
-                        {% for childlink in link.links %}
 
-                          <a href="#" class="-m-3 p-3 mt-2 flex items-center rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-50">
+                      <div x-show="{{ mobile_link_handle }}" class="grid gap-y-7 py-3">
+                        {% for childlink in link.links %}
+                          <a href="{{ childlink.url }}" class="-m-3 p-3 mt-2 flex items-center rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-50">
                             <span class="ml-3 text-base font-medium text-gray-500">{{ childlink.title }}</span>
                           </a>
-
                         {% endfor %}
                       </div>
-
                     </div>
                   {% else %}
-                    <a href="#" class="-m-3 p-3 flex items-center rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-50">
+                    <a href="{{ link.url }}" class="-m-3 p-3 flex items-center rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-50">
                       {{ link.title }}
                     </a>
+
                   {% endif %}
+
                 {% endfor %}
-
-
-                <a href="#" class="-m-3 p-3 flex items-center rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-50">
-                  LINK ITEM
-                </a>
-
-
               </nav>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-
   </div>
-  <!-- Search Bar -->
+
   <div x-show="searchBarOpen" class="w-full absolute top-0 bg-white border">
     <button
       type="button"
       x-on:click="searchBarOpen = false"
-      class="absolute top-0 right-0 mr-5 mt-5 text-gray-500">{% render 'icon-close' %}</button>
+      class="absolute top-0 right-0 mr-5 mt-5 text-gray-500">
+      {% render 'icon-close' %}
+    </button>
     <div class="h-40 flex justify-center items-center">
       <form
         action="{{ routes.search_url }}"
@@ -176,7 +171,7 @@
             type="search"
             name="q"
             placeholder="Search"
-            class="w-full bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outeline-none">
+            class="w-full bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
           <button type="submit" class="absolute right-0 top-0 mt-2 mr-2 md:mr-20">
             {% render 'icon-search' %}
           </button>
@@ -185,21 +180,21 @@
     </div>
   </div>
 </div>
+
 {% schema %}
   {
-    "name": "Navigational Bar",
+    "name": "Header",
     "settings": [
       {
         "type": "text",
         "id": "mobile_menu_title",
-        "label": "Title",
         "default": "Menu",
-        "info": "This is title of the mobile menu window"
+        "label": "Mobile Menu Title"
       }, {
         "type": "link_list",
         "id": "menu",
-        "label": "Header Menu",
-        "default": "main-menu"
+        "default": "main-menu",
+        "label": "Heading Navigation Menu"
       }
     ]
   }
