@@ -1,0 +1,25 @@
+<div class="min-h-full flex items-center justify-center py-12 px-4 sm-px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <!-- Container for header -->
+    <div>
+      <h1 class="mt-6 text-center text-3xl font-bold text-gray-700">Activate account</h1>
+      <p class="mt-4 text-center">Create password to activate your account</p>
+    </div>
+    <!-- Form for creating password -->
+    <div>
+      {% form 'activate_customer_password' %}
+        <!-- Label for password input -->
+        <div>
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="customer[password]"
+            id="password"
+            placeholder="New password"
+            class="relative block w-full px-3 py-2 border placeholder-gray-300 text-gray-700"
+            autocomplete="new-password">
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>
