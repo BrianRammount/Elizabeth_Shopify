@@ -241,23 +241,27 @@
   </script>
   {% comment %} Initial swiper JS {% endcomment %}
   <script>
-       const swiper = new Swiper('.swiper', {
-      // Optional parameters
-      direction: 'horizontal',
-      loop: true,
-    
-      // If we need pagination
-      pagination: {
-    el: '.swiper-pagination',
-      },
-    
-      // Navigation arrows
-      navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev'
-      },
-    
-      });
+    document.addEventListener('DOMContentLoaded', function(){
+      try{
+          const swiper = new Swiper('.swiper', {
+          // Optional parameters
+          direction: 'horizontal',
+          loop: true,
+        
+          // If we need pagination
+          pagination: {
+        el: '.swiper-pagination',
+          },
+        
+          // Navigation arrows
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+          }
+          
+        });
+      } catch(e) {console.log("SwiperJS is not defined");}
+    })
   </script>
 
   {% schema %}
