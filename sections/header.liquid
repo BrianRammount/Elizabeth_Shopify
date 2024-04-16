@@ -1,4 +1,10 @@
-{% assign main_menu_linklist = linklists[section.settings.menu].links %}
+{% liquid
+  if section.settings.menu.links == blank
+    assign main_menu_linklist = linklists[section.settings.menu].links
+  else
+    assign main_menu_linklist = section.settings.menu.links
+  endif
+%}
 <!-- Nav Container -->
 <div
   class="relative bg-white"
@@ -22,6 +28,7 @@
       </div>
       <!-- NAVIGATION MENU -->
       <nav class="hidden md:flex space-x-10">
+
 
         {% for link in main_menu_linklist %}
           {% if link.links != blank %}
